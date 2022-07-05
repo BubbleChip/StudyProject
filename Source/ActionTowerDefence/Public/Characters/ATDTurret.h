@@ -28,6 +28,8 @@ private:
 	// if private and Blueprint can read it then use "meta = (AllowPrivateAccess = "true")"
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Body", meta = (AllowPrivateAccess = "true"))
+		class UBoxComponent* boxComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Body", meta = (AllowPrivateAccess = "true"))
 		class UStaticMeshComponent* baseMeshComponent;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Body", meta = (AllowPrivateAccess = "true"))
 		class UStaticMeshComponent* weaponMeshComponent;

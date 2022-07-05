@@ -3,17 +3,24 @@
 
 #include "Characters/ATDTurret.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
 
 // Sets default values
 AATDTurret::AATDTurret()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	boxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
+	boxComponent->ShapeColor = FColor(255, 138, 5, 255);
+	boxComponent->bDrawOnlyIfSelected = true;
+	RootComponent = boxComponent;
+	bCollideWhenPlacing = true;
+
 	baseMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(FName("baseMeshComponent"));
-	RootComponent = baseMeshComponent;
+	baseMeshComponent->SetupAttachment(boxComponent);
 
 	weaponMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(FName("weaponMeshComponent"));
-	weaponMeshComponent->SetupAttachment(baseMeshComponent);
+	weaponMeshComponent->SetupAttachment(boxComponent);
 
 
 }
